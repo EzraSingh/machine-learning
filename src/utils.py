@@ -9,7 +9,7 @@ def truncated_norm(mean=0, sd=1, low=0, upp=10):
     b = (upp - mean) / sd
     return truncnorm(a, b, loc=mean, scale=sd)
 
-''' Mixin for vector-izing and standard-izing neural network activations '''
+''' Mixin for vector-izing neural network activations '''
 class Activator:
     def activation(self, X):
         return 0 if X <= 0 else 1
@@ -26,7 +26,7 @@ class Activator:
 class Sigmoid(Activator):
     def activation(self, X):
         return expit(X)
-        #return 1 / (1 + np.e ** -X)
+        #return 1 / (1 + np.e ** -X) # <- manual implementation
     
     def activation_gradient(self, X):
         z = self.activation(X)
